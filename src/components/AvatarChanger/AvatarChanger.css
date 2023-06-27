@@ -1,0 +1,53 @@
+.color-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.color-button:hover {
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.1);
+    transform: scale(1.1);
+    filter: brightness(0.8);
+
+    transition: all 0.3s ease;
+}
+    
+.color-button:active {
+    transform: scale(0.9);
+
+}
+
+.input-box {
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 1.2em;
+    border: 2px solid #cccccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.input-box:focus {
+    border-color: #0080ff;
+    box-shadow: 0 0 5px rgba(0, 128, 255, 0.5);
+}
+
+.avatar-changer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;  
+}
+
+.custom-text {
+    display: block;
+    font-size: 2em;  
+    margin: 20px 0 40px 0;  
+    color: #1a37d6; 
+    font-weight: bold;
+    text-align: center;
+}
+  
