@@ -8,7 +8,10 @@ type AvatarProps = {
 
 const Avatar: React.FC<AvatarProps> = ({ name, backgroundColor }) => {
   const avatarUrl = `http://localhost:3000/user-avatar?name=${name}&backgroundColor=${backgroundColor}`;
-  return <img className="avatar" src={avatarUrl}  alt="User avatar" />;
+  const handleError = (event: React.SyntheticEvent<HTMLImageElement, Event>) => {
+    event.currentTarget.style.display = 'none';
+  }
+  return <img className="avatar" src={avatarUrl}  alt="User avatar" onError={handleError} />;
 };
 
 export default Avatar;
