@@ -3,13 +3,14 @@ import Avatar from '../SignleAvatar/SingleAvatar';
 import './AvatarChanger.css';
 
 const AvatarChanger = () => {
-  const [name, setName] = useState('Alterya');
+  const [name, setName] = useState('Check');
   const [backgroundColor, setBackgroundColor] = useState('800080');
-  const [inputName, setInputName] = useState('Alterya'); 
+  const [inputName, setInputName] = useState('Check'); 
+  const colors = ['#800080', '#0000FF', '#008000', '#FF0000', '#ca8a04'];
 
-  const handleKeyPress = (event: React.KeyboardEvent) => {
-    if(event.key === 'Enter' && inputName !== '') {
-      event.preventDefault(); 
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault(); 
+    if (inputName !== '') {
       setName(inputName);
     }
   }
@@ -19,7 +20,7 @@ const AvatarChanger = () => {
   }
 
   const handleColorChange = (color: string) => {
-    setBackgroundColor(color); 
+    setBackgroundColor(color.substring(1)); 
   }
 
   return (
@@ -30,21 +31,24 @@ const AvatarChanger = () => {
         <Avatar name={name} backgroundColor={backgroundColor} />
       </div>
 
-      <div>
+      <form onSubmit={handleSubmit}>
         <input 
           className="input-box"
           type="text"
           value={inputName}
           onChange={handleNameChange}
-          onKeyDown={handleKeyPress} />
-      </div>
+         />
+
+      </form>
 
       <div>
-        <button className="color-button" style={{background: '#800080'}} onClick={() => handleColorChange('800080')}></button>
-        <button className="color-button" style={{background: '#0000FF'}} onClick={() => handleColorChange('0000FF')}></button>
-        <button className="color-button" style={{background: '#008000'}} onClick={() => handleColorChange('008000')}></button>
-        <button className="color-button" style={{background: '#FF0000'}} onClick={() => handleColorChange('FF0000')}></button>
-        <button className="color-button" style={{background: '#ca8a04'}} onClick={() => handleColorChange('ca8a04')}></button>
+      {colors.map((color, index) => (
+        <button 
+          key={index} 
+          className={`color-button color-${color.substring(1)}`}
+          onClick={() => handleColorChange(color)}
+        ></button>
+      ))}
       </div>
     </div>
   );
